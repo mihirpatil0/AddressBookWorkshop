@@ -38,7 +38,9 @@ public class AddressBookMain
                     7.Sort By Zip-Code:
                     8.Write Into File:
                     9.Read From File:
-                    10.Exit\n""");
+                    10.Write Into CSV-File:
+                    11.Read From CSV-File;
+                    12.Exit\n""");
             int userInput = scanner.nextInt();
             switch (userInput)
             {
@@ -78,6 +80,14 @@ public class AddressBookMain
                     addressBookFileService.readFromTextFile();
                     break;
                 case 10:
+                    //write into csv-file.
+                    addressBookFileService.writingToCsvFile();
+                    break;
+                case 11:
+                    //read from csv-file.
+                    addressBookFileService.readFromCsvFile();
+                    break;
+                case 12:
                     //Exit from program.
                     isExit = true;
                     break;

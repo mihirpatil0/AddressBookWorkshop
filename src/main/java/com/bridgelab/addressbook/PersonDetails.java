@@ -1,14 +1,24 @@
 package com.bridgelab.addressbook;
 
+import com.opencsv.bean.CsvBindByPosition;
+
 public class PersonDetails
 {
+    @CsvBindByPosition(position = 0)
     private String firstName;
+    @CsvBindByPosition(position = 1)
     private String lastName;
+    @CsvBindByPosition(position = 2)
     private String address;
+    @CsvBindByPosition(position = 3)
     private String city;
+    @CsvBindByPosition(position = 4)
     private String state;
+    @CsvBindByPosition(position = 5)
     private int zipCode;
+    @CsvBindByPosition(position = 6)
     private long phoneNumber;
+    @CsvBindByPosition(position = 7)
     private String emailId;
 
     public String getFirstName() {

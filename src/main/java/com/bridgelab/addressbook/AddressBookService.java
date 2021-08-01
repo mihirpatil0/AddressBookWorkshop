@@ -9,7 +9,7 @@ public class AddressBookService
     //To store contacts.
     ArrayList<PersonDetails> contactList;
     //To store multiple addressBook.
-    static Map<String,ArrayList<PersonDetails>> addressBook;
+    static HashMap<String, ArrayList<PersonDetails>> addressBook;
 
     //instantiating scanner and ArrayList in constructor.
     public AddressBookService()

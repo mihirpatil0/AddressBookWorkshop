@@ -7,7 +7,9 @@ public class CustomException extends Throwable {
         WRONG_INPUT,
         NUll_VALUE,
         WRONG_FILE_TYPE,
-        FILE_NOT_FOUND
+        FILE_NOT_FOUND;
+        public static final ExceptionsType DATA_MISSMATCH = null;
+        public static final ExceptionsType EMPTY_FILE = null;
     }
 
     public ExceptionsType type;
