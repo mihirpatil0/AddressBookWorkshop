@@ -27,7 +27,7 @@ public class AddressBookMain
         boolean isExit = false;
         while (!isExit)
         {
-            System.out.print("Enter Number As Per Your Choice:\n1.Add-New Contacts:\n2.Exit:\n");
+            System.out.print("Enter Number As Per Your Choice:\n1.Add-New Contacts:\n2.Edit Contact:\n3.Exit\n");
             int userInput = scanner.nextInt();
             switch (userInput)
             {
@@ -35,6 +35,9 @@ public class AddressBookMain
                     addressBookService.addNewContact();
                     break;
                 case 2:
+                    addressBookService.editFullContact();
+                    break;
+                case 3:
                     //Exit from program.
                     isExit = true;
                     break;
