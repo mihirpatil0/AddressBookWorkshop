@@ -186,4 +186,36 @@ public class AddressBookService
                 System.out.println("Incorrect Entry !");
         }
     }
+
+    /**
+     * Name : deleteContact
+     *
+     * Description : Deleting contact as per user input.
+     *
+     * Algorithm : Taking mobile number because it will be unique to delete associated contact.
+     * Iterating over array to get the exact match record once we get it making that record as null.
+     * Which is considered to be deleted.
+     *
+     * Modification : First commit 14-July-2021
+     */
+    public void deleteContact()
+    {
+        System.out.print("\nGive a mobile number to deleted associated contact : ");
+        long searchNumber = scanner.nextLong();
+        for(int i = 0; i < contactList.size(); i++)
+        {
+            if(contactList.get(i).getPhoneNumber() == searchNumber)
+            {
+                contactList.remove(i);
+                System.out.println("\nContact successfully deleted\n");
+                break;
+            }
+            else
+            {
+                System.out.println("Contact associated with the given mobile number does not exist." +
+                        "Enter correct mobile number.");
+                deleteContact();
+            }
+        }
+    }
 }
