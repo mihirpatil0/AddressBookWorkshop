@@ -28,34 +28,38 @@ public class AddressBookService
      */
     public void addNewContact()
     {
-        PersonDetails contactDetails = new PersonDetails();
+        System.out.print("Enter how many contacts you want to store at a time : ");
+        int enterCount = scanner.nextInt();
+        for (int i = 0; i < enterCount; i++)
+        {
+            PersonDetails contactDetails = new PersonDetails();
+            System.out.print("Enter First Name : ");
+            contactDetails.setFirstName(scanner.next());
 
-        System.out.print("Enter First Name : ");
-        contactDetails.setFirstName(scanner.next());
+            System.out.print("Enter Last Name : ");
+            contactDetails.setLastName(scanner.next());
 
-        System.out.print("Enter Last Name : ");
-        contactDetails.setLastName(scanner.next());
+            System.out.print("Enter Address : ");
+            contactDetails.setAddress(scanner.next());
 
-        System.out.print("Enter Address : ");
-        contactDetails.setAddress(scanner.next());
+            System.out.print("Enter City : ");
+            contactDetails.setCity(scanner.next());
 
-        System.out.print("Enter City : ");
-        contactDetails.setCity(scanner.next());
+            System.out.print("Enter State : ");
+            contactDetails.setState(scanner.next());
 
-        System.out.print("Enter State : ");
-        contactDetails.setState(scanner.next());
+            System.out.print("Enter ZipCode : ");
+            contactDetails.setZipCode(scanner.nextInt());
 
-        System.out.print("Enter ZipCode : ");
-        contactDetails.setZipCode(scanner.nextInt());
+            System.out.print("Enter Phone-Number : ");
+            contactDetails.setPhoneNumber(scanner.nextLong());
 
-        System.out.print("Enter Phone-Number : ");
-        contactDetails.setPhoneNumber(scanner.nextLong());
+            System.out.print("Enter Email-Id : ");
+            contactDetails.setEmailId(scanner.next());
 
-        System.out.print("Enter Email-Id : ");
-        contactDetails.setEmailId(scanner.next());
-
-        contactList.add(contactDetails);
-        System.out.println("\nContact added successfully.\n");
+            contactList.add(contactDetails);
+            System.out.println("\nContact added successfully.\n");
+        }
     }
 
     /**
