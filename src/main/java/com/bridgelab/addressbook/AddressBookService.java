@@ -9,7 +9,7 @@ public class AddressBookService
     //To store contacts.
     ArrayList<PersonDetails> contactList;
     //To store multiple addressBook.
-    Map<String,ArrayList<PersonDetails>> addressBook;
+    static Map<String,ArrayList<PersonDetails>> addressBook;
 
     //instantiating scanner and ArrayList in constructor.
     public AddressBookService()
@@ -29,62 +29,73 @@ public class AddressBookService
      *
      * Modification : First commit 14-July-2021.
      */
-    public void addNewContact()
+    public void addNewContact() throws CustomException
     {
-        System.out.print("Enter how many contacts you want to store at a time : ");
-        int enterCount = scanner.nextInt();
-        for (int i = 0; i < enterCount; i++)
+        try
         {
-            PersonDetails contactDetails = new PersonDetails();
-            System.out.print("Enter First Name : ");
-            String firstName = scanner.next();
-            contactDetails.setFirstName(firstName);
+            System.out.print("Enter how many contacts you want to store at a time : ");
+            int enterCount = scanner.nextInt();
+            for (int i = 0; i < enterCount; i++) {
+                PersonDetails contactDetails = new PersonDetails();
+                System.out.print("Enter First Name : ");
+                String firstName = scanner.next();
+                contactDetails.setFirstName(firstName);
 
-            System.out.print("Enter Last Name : ");
-            contactDetails.setLastName(scanner.next());
+                System.out.print("Enter Last Name : ");
+                contactDetails.setLastName(scanner.next());
 
-            System.out.print("Enter Address : ");
-            contactDetails.setAddress(scanner.next());
+                System.out.print("Enter Address : ");
+                contactDetails.setAddress(scanner.next());
 
-            System.out.print("Enter City : ");
-            contactDetails.setCity(scanner.next());
+                System.out.print("Enter City : ");
+                contactDetails.setCity(scanner.next());
 
-            System.out.print("Enter State : ");
-            contactDetails.setState(scanner.next());
+                System.out.print("Enter State : ");
+                contactDetails.setState(scanner.next());
 
-            System.out.print("Enter ZipCode : ");
-            contactDetails.setZipCode(scanner.nextInt());
+                System.out.print("Enter ZipCode : ");
+                contactDetails.setZipCode(scanner.nextInt());
 
-            System.out.print("Enter Phone-Number : ");
-            contactDetails.setPhoneNumber(scanner.nextLong());
+                System.out.print("Enter Phone-Number : ");
+                contactDetails.setPhoneNumber(scanner.nextLong());
 
-            System.out.print("Enter Email-Id : ");
-            contactDetails.setEmailId(scanner.next());
+                System.out.print("Enter Email-Id : ");
+                contactDetails.setEmailId(scanner.next());
 
-            System.out.print("Enter Book name to which you have to add contact : ");
-            String bookName  = scanner.next();
-            if(addressBook.containsKey(bookName))
-            {
-                ArrayList<PersonDetails> contactList = addressBook.get(bookName);
-                //checking for duplicate contact
-                contactList.stream().filter(personDetails -> personDetails.getFirstName().equals(firstName)).forEach(personDetails -> {
-                    System.out.println("Sorry can not allow duplicate contact :");
-                    addNewContact();
-                });
-                contactList.add(contactDetails);
-                addressBook.put(bookName,contactList);
-                System.out.println("New Contact Added Successfully");
+                System.out.print("Enter Book name to which you have to add contact : ");
+                String bookName = scanner.next();
+                if (addressBook.containsKey(bookName)) {
+                    ArrayList<PersonDetails> contactList = addressBook.get(bookName);
+                    //checking for duplicate contact
+                    contactList.stream().filter(personDetails -> personDetails.getFirstName().equals(firstName)).forEach(personDetails -> {
+                        System.out.println("Sorry can not allow duplicate contact :");
+                        try {
+                            addNewContact();
+                        } catch (CustomException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    contactList.add(contactDetails);
+                    addressBook.put(bookName, contactList);
+                    System.out.println("New Contact Added Successfully");
+                } else {
+                    contactList.stream().filter(personDetails -> personDetails.getFirstName().equals(firstName)).forEach(personDetails -> {
+                        System.out.println("Sorry can not allow duplicate contact :");
+                        try {
+                            addNewContact();
+                        } catch (CustomException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    contactList.add(contactDetails);
+                    addressBook.put(bookName, contactList);
+                    System.out.println("New Address-Book created and added Contact Added Successfully");
+                }
             }
-            else
-            {
-                contactList.stream().filter(personDetails -> personDetails.getFirstName().equals(firstName)).forEach(personDetails -> {
-                    System.out.println("Sorry can not allow duplicate contact :");
-                    addNewContact();
-                });
-                contactList.add(contactDetails);
-                addressBook.put(bookName,contactList);
-                System.out.println("New Address-Book created and added Contact Added Successfully");
-            }
+        }
+        catch (InputMismatchException e)
+        {
+            throw new CustomException(CustomException.ExceptionsType.WRONG_INPUT, "Entered the wrong value");
         }
     }
 

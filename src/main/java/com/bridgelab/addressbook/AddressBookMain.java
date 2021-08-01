@@ -21,9 +21,9 @@ public class AddressBookMain
      *
      * Modification : First commit 14-July-2021
      */
-    public void chooseOption()
-    {
+    public void chooseOption() throws CustomException {
         AddressBookService addressBookService = new AddressBookService();
+        AddressBookFileService addressBookFileService = new AddressBookFileService();
         boolean isExit = false;
         while (!isExit)
         {
@@ -36,7 +36,9 @@ public class AddressBookMain
                     5.Get Number Of Contacts In City Or State:
                     6.Sort And Display Contacts:
                     7.Sort By Zip-Code:
-                    8.Exit\n""");
+                    8.Write Into File:
+                    9.Read From File:
+                    10.Exit\n""");
             int userInput = scanner.nextInt();
             switch (userInput)
             {
@@ -68,6 +70,14 @@ public class AddressBookMain
                     //sort contacts by zip-code.
                     addressBookService.sortByZipCode();
                 case 8:
+                    //write to file:
+                    addressBookFileService.writingToTextFile();
+                    break;
+                case 9:
+                    //read from file:
+                    addressBookFileService.readFromTextFile();
+                    break;
+                case 10:
                     //Exit from program.
                     isExit = true;
                     break;
@@ -77,8 +87,7 @@ public class AddressBookMain
         }
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws CustomException {
         AddressBookMain addressBookMain = new AddressBookMain();
         addressBookMain.chooseOption();
     }
