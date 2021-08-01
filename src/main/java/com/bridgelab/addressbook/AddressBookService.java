@@ -68,28 +68,21 @@ public class AddressBookService
             if(addressBook.containsKey(bookName))
             {
                 ArrayList<PersonDetails> contactList = addressBook.get(bookName);
-                for (int j = 0; j < contactList.size(); j++)
-                {
-                    if(contactList.get(j).getFirstName().equals(firstName))
-                    {
-                        System.out.println("Sorry can not allow duplicate contact :");
-                        addNewContact();
-                    }
-                }
+                //checking for duplicate contact
+                contactList.stream().filter(personDetails -> personDetails.getFirstName().equals(firstName)).forEach(personDetails -> {
+                    System.out.println("Sorry can not allow duplicate contact :");
+                    addNewContact();
+                });
                 contactList.add(contactDetails);
                 addressBook.put(bookName,contactList);
                 System.out.println("New Contact Added Successfully");
             }
             else
             {
-                for (int k = 0; k < contactList.size(); k++)
-                {
-                    if(contactList.get(k).getFirstName().equals(firstName))
-                    {
-                        System.out.println("Sorry can not allow duplicate contact :");
-                        addNewContact();
-                    }
-                }
+                contactList.stream().filter(personDetails -> personDetails.getFirstName().equals(firstName)).forEach(personDetails -> {
+                    System.out.println("Sorry can not allow duplicate contact :");
+                    addNewContact();
+                });
                 contactList.add(contactDetails);
                 addressBook.put(bookName,contactList);
                 System.out.println("New Address-Book created and added Contact Added Successfully");
@@ -256,5 +249,22 @@ public class AddressBookService
                 deleteContact();
             }
         }
+    }
+
+    /**
+     * Name : searchPersonInACityOrState
+     *
+     * Description : Searching person by city or state.
+     *
+     * Algorithm : Printing Person contact who belongs to given city or state.
+     *
+     * Modification : Final commit 16-July-2021
+     */
+    public void searchPersonInACityOrState()
+    {
+        System.out.print("Enter City Name Or State Name To Search Contact : ");
+        String searchCityState = scanner.next();
+        System.out.println("\nFollowing are the persons who belongs to : " + searchCityState);
+        contactList.stream().filter(details -> details.getCity().equals(searchCityState) || details.getState().equals(searchCityState)).map(PersonDetails::getFirstName).forEach(System.out::println);
     }
 }
