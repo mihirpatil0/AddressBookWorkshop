@@ -1,6 +1,8 @@
 package com.bridgelab.addressbook;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class AddressBookService
@@ -8,12 +10,15 @@ public class AddressBookService
     Scanner scanner;
     //To store contacts.
     ArrayList<PersonDetails> contactList;
+    //To store multiple addressBook.
+    Map<String,ArrayList<PersonDetails>> addressBook;
 
     //instantiating scanner and ArrayList in constructor.
     public AddressBookService()
     {
         scanner = new Scanner(System.in);
         contactList = new ArrayList<>();
+        addressBook = new HashMap<>();
     }
 
     /**
@@ -57,8 +62,21 @@ public class AddressBookService
             System.out.print("Enter Email-Id : ");
             contactDetails.setEmailId(scanner.next());
 
-            contactList.add(contactDetails);
-            System.out.println("\nContact added successfully.\n");
+            System.out.print("Enter Book name to which you have to add contact : ");
+            String bookName  = scanner.next();
+            if(addressBook.containsKey(bookName))
+            {
+                ArrayList<PersonDetails> contactList = addressBook.get(bookName);
+                contactList.add(contactDetails);
+                addressBook.put(bookName,contactList);
+                System.out.println("New Contact Added Successfully");
+            }
+            else
+            {
+                contactList.add(contactDetails);
+                addressBook.put(bookName,contactList);
+                System.out.println("New Address-Book created and added Contact Added Successfully");
+            }
         }
     }
 
