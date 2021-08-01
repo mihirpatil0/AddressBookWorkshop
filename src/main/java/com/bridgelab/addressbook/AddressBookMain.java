@@ -34,7 +34,8 @@ public class AddressBookMain
                     3.Delete Contact:
                     4.Search Person In city Or State:
                     5.Get Number Of Contacts In City Or State:
-                    6.Exit\n""");
+                    6.Sort And Display Contacts:
+                    7.Exit\n""");
             int userInput = scanner.nextInt();
             switch (userInput)
             {
@@ -59,6 +60,10 @@ public class AddressBookMain
                     addressBookService.getNumberOfContacts();
                     break;
                 case 6:
+                    //sorting contacts alphabetically.
+                    addressBookService.sortContactByFirstName();
+                    break;
+                case 7:
                     //Exit from program.
                     isExit = true;
                     break;

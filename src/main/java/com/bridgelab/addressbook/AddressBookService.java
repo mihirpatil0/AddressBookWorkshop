@@ -1,9 +1,7 @@
 package com.bridgelab.addressbook;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class AddressBookService
 {
@@ -282,5 +280,20 @@ public class AddressBookService
         int totalCount = 0;
         contactList.stream().filter(details -> details.getCity().equals(countContacts) || details.getState().equals(countContacts)).map(PersonDetails::getFirstName).forEach(System.out::println);totalCount++;
         System.out.println("\nTotal number of contacts present in " + countContacts + " is : " + totalCount);
+    }
+
+    /**
+     * Name : sortContactByFirstName
+     *
+     * Description : Sorting existing contacts in address book by their first name.
+     *
+     * Modification : First commit 16-July-2021
+     */
+    public void sortContactByFirstName()
+    {
+        addressBook.keySet().forEach((String name) -> {
+            addressBook.get(name).stream().sorted(Comparator.comparing(PersonDetails::getFirstName))
+                    .collect(Collectors.toList()).forEach(person -> System.out.println(person.toString()));
+        });
     }
 }
