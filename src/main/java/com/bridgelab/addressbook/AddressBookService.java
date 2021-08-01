@@ -267,4 +267,20 @@ public class AddressBookService
         System.out.println("\nFollowing are the persons who belongs to : " + searchCityState);
         contactList.stream().filter(details -> details.getCity().equals(searchCityState) || details.getState().equals(searchCityState)).map(PersonDetails::getFirstName).forEach(System.out::println);
     }
+
+    /**
+     * Name : getNumberOfContacts
+     *
+     * Description : Printing total count of contacts present in respective address book.
+     *
+     * Modification : First commit 14-July-2021
+     */
+    public void getNumberOfContacts()
+    {
+        System.out.print("Enter City Name Or State Name To Get The Count Of Contacts : ");
+        String countContacts = scanner.next();
+        int totalCount = 0;
+        contactList.stream().filter(details -> details.getCity().equals(countContacts) || details.getState().equals(countContacts)).map(PersonDetails::getFirstName).forEach(System.out::println);totalCount++;
+        System.out.println("\nTotal number of contacts present in " + countContacts + " is : " + totalCount);
+    }
 }

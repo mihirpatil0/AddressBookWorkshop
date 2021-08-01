@@ -33,7 +33,8 @@ public class AddressBookMain
                     2.Edit Contact:
                     3.Delete Contact:
                     4.Search Person In city Or State:
-                    5.Exit\n""");
+                    5.Get Number Of Contacts In City Or State:
+                    6.Exit\n""");
             int userInput = scanner.nextInt();
             switch (userInput)
             {
@@ -54,6 +55,10 @@ public class AddressBookMain
                     addressBookService.searchPersonInACityOrState();
                     break;
                 case 5:
+                    //get number contact in a city or state.
+                    addressBookService.getNumberOfContacts();
+                    break;
+                case 6:
                     //Exit from program.
                     isExit = true;
                     break;
