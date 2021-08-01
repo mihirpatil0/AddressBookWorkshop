@@ -296,4 +296,21 @@ public class AddressBookService
                     .collect(Collectors.toList()).forEach(person -> System.out.println(person.toString()));
         });
     }
+
+    /**
+     * Name : sortByZipCode
+     *
+     * Description : Sorting existing contact using zipcode.
+     *
+     * Modification : First commit 16-July-2021
+     */
+    public void sortByZipCode()
+    {
+        addressBook.keySet().forEach((String key) -> {
+            addressBook.get(key).stream()
+                    .sorted(Comparator.comparing(PersonDetails::getZipCode))
+                    .collect(Collectors.toList())
+                    .forEach(person -> System.out.println(person.toString()));
+        });
+    }
 }
