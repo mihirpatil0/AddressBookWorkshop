@@ -40,7 +40,9 @@ public class AddressBookMain
                     9.Read From File:
                     10.Write Into CSV-File:
                     11.Read From CSV-File;
-                    12.Exit\n""");
+                    12.Write From Json-File:
+                    13.Read from Json-File:
+                    14.Exit\n""");
             int userInput = scanner.nextInt();
             switch (userInput)
             {
@@ -88,6 +90,14 @@ public class AddressBookMain
                     addressBookFileService.readFromCsvFile();
                     break;
                 case 12:
+                    //write to json file.
+                    addressBookFileService.writingToJsonFile();
+                    break;
+                case 13:
+                    //read from json file.
+                    addressBookFileService.readFromJsonFile();
+                    break;
+                case 14:
                     //Exit from program.
                     isExit = true;
                     break;
