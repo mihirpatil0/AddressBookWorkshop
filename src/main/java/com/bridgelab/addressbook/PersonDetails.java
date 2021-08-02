@@ -2,8 +2,11 @@ package com.bridgelab.addressbook;
 
 import com.opencsv.bean.CsvBindByPosition;
 
+import java.util.Objects;
+
 public class PersonDetails
 {
+    private int id;
     @CsvBindByPosition(position = 0)
     private String firstName;
     @CsvBindByPosition(position = 1)
@@ -27,6 +30,14 @@ public class PersonDetails
 
     public PersonDetails() {
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -96,7 +107,8 @@ public class PersonDetails
     @Override
     public String toString() {
         return "PersonDetails{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
@@ -105,5 +117,20 @@ public class PersonDetails
                 ", phoneNumber=" + phoneNumber +
                 ", emailId='" + emailId + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        PersonDetails other = (PersonDetails) obj;
+        return Objects.equals(address, other.address) && Objects.equals(city, other.city)
+                && Objects.equals(emailId, other.emailId) && Objects.equals(firstName, other.firstName) && id == other.id
+                && Objects.equals(lastName, other.lastName) && phoneNumber == other.phoneNumber
+                && Objects.equals(state, other.state) && Objects.equals(zipCode, other.zipCode);
     }
 }
