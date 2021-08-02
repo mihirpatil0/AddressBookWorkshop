@@ -424,4 +424,24 @@ public class AddressBookService
         String query = "Select  * from address_book  Where Date_Added Between cast('"+date+"' as date) and date(now()) ;";
         return getQueryResult(query);
     }
+
+    public HashMap<String, Integer> getContactHaveSameCity()
+    {
+        HashMap<String, Integer> matches = new HashMap<String, Integer>();
+        try(Connection connection = this.getConnection())
+        {
+            String sql = " select City,count(City) from address_book group by City; ";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next())
+            {
+                matches.put(resultSet.getString(1),resultSet.getInt(2));
+            }
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return matches;
+    }
 }

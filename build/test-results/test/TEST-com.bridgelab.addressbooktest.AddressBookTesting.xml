@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelab.addressbooktest.AddressBookTesting" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-02T18:43:13" hostname="NARUTO" time="0.322">
+<testsuite name="com.bridgelab.addressbooktest.AddressBookTesting" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-08-02T18:47:16" hostname="NARUTO" time="0.285">
   <properties/>
-  <testcase name="givenAddressbookDB_WhenBetweenDates_ShouldReturnListOfContacts()" classname="com.bridgelab.addressbooktest.AddressBookTesting" time="0.322"/>
+  <testcase name="givenAddressbookDB_WhenInSameCity_ShouldReturnNumberOfContacts()" classname="com.bridgelab.addressbooktest.AddressBookTesting" time="0.285"/>
   <system-out><![CDATA[Connecting to databasejdbc:mysql://localhost:3306/addressbook_service?useSSL=false
-Connection successfulcom.mysql.cj.jdbc.ConnectionImpl@5028c291
+Connection successfulcom.mysql.cj.jdbc.ConnectionImpl@11f2cca
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
