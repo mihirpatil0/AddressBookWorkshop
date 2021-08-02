@@ -418,4 +418,10 @@ public class AddressBookService
     {
         return contactListDB.stream().filter(contacts->contacts.getFirstName().equals(name)).findFirst().orElse(null);
     }
+
+    public List<PersonDetails> getContatctsAddedAfterdate(String date)
+    {
+        String query = "Select  * from address_book  Where Date_Added Between cast('"+date+"' as date) and date(now()) ;";
+        return getQueryResult(query);
+    }
 }
