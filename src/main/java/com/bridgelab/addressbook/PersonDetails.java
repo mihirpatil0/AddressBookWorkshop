@@ -2,6 +2,7 @@ package com.bridgelab.addressbook;
 
 import com.opencsv.bean.CsvBindByPosition;
 
+import java.util.List;
 import java.util.Objects;
 
 public class PersonDetails
@@ -29,6 +30,10 @@ public class PersonDetails
     }
 
     public PersonDetails() {
+
+    }
+
+    public PersonDetails(int id, String first, String last, String address, String city, String state, String zip, int phoneNumber, String email, List<String> groups) {
 
     }
 
