@@ -21,6 +21,14 @@ public class PersonDetails
     @CsvBindByPosition(position = 7)
     private String emailId;
 
+    public PersonDetails(int id, String firstName, String lastname, String address, String city, String state, String zip, int phoneNumber, String email) {
+
+    }
+
+    public PersonDetails() {
+
+    }
+
     public String getFirstName() {
         return firstName;
     }
